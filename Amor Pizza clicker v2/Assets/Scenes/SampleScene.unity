@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 151.66985}
+  m_AnchoredPosition: {x: 0, y: 146.45184}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &113607557
@@ -830,7 +830,7 @@ MonoBehaviour:
     moneyPerSecondIncrease: 2
     level: 1
     prisStigning: 1.4
-  shopPrefab: {fileID: 884156937193474358, guid: 262525c01a1109c47908132e8784b265, type: 3}
+  shopPrefab: {fileID: 5312163006622230212, guid: 262525c01a1109c47908132e8784b265, type: 3}
   content: {fileID: 113607555}
 --- !u!1 &950676089
 GameObject:
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.67958415, b: 0.4188679, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
