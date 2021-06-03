@@ -20,6 +20,7 @@ public class Clicker : MonoBehaviour
     public void OnClick()
     {
         GameManager.instance.changeMoney(GameManager.instance.clickUpgrade);
+        GameManager.instance.currentPowerFill++;
     }
     
 }

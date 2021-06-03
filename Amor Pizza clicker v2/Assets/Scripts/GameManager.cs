@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public float money = 0f;
     public int clickUpgrade = 1;
     public int moneyPerSecond = 0;
-    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI[] moneyText;
+    public float currentPowerFill;
+    public float maxPowerFill = 10;
+    public Image powerProgress;
 
     public static GameManager instance;
 
@@ -27,7 +31,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        changeMoney(moneyPerSecond * Time.deltaTime);   
+        changeMoney(moneyPerSecond * Time.deltaTime);
+        powerProgress.fillAmount = currentPowerFill / maxPowerFill;
     }
 
     public void changeMoney(float amount)
@@ -51,6 +56,9 @@ public class GameManager : MonoBehaviour
             formatedMoney = decimal.Round(moneyConverted / 1000000000, 2).ToString() + "B$";
         }
 
-        moneyText.text = formatedMoney;
+        foreach (TextMeshProUGUI text in moneyText)
+        {
+            text.text = formatedMoney;
+        }
     }
 }
