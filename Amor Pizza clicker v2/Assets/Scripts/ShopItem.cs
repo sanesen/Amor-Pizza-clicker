@@ -41,7 +41,7 @@ public class ShopItem : MonoBehaviour
     {
         if (GameManager.instance.money>=model.pris)
         {
-            GameManager.instance.changeMoney(-model.pris);
+            GameManager.instance.changeMoney(-model.pris/(GameManager.instance.powerActive()?GameManager.instance.powerUpgrade:1));
             GameManager.instance.clickUpgrade += model.clickPowerIncrease;
             GameManager.instance.moneyPerSecond += model.moneyPerSecondIncrease;
             model.pris = Mathf.FloorToInt(model.pris*model.prisStigning);

@@ -5,10 +5,11 @@ using TMPro;
 
 public class Clicker : MonoBehaviour
 {
+    PizzaSpawnerEffect pizzaSpawner;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pizzaSpawner = FindObjectOfType<PizzaSpawnerEffect>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,11 @@ public class Clicker : MonoBehaviour
     public void OnClick()
     {
         GameManager.instance.changeMoney(GameManager.instance.clickUpgrade);
-        GameManager.instance.currentPowerFill++;
+        if (!GameManager.instance.powerActive())
+        {
+            GameManager.instance.currentPowerFill++;
+        }
+        pizzaSpawner.spawnPizza();
     }
     
 }
