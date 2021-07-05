@@ -9,7 +9,7 @@ public class ShopItemModel
     public string navn;
     public float pris;
     public Sprite ikon;
-    public int clickPowerIncrease, moneyPerSecondIncrease;
+    public int clickPowerIncrease, moneyPerSecondIncrease, superPowerChanceIncrease;
     public int level = 1;
     public float prisStigning = 1.5f;
 }

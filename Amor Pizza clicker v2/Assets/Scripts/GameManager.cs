@@ -52,10 +52,14 @@ public class GameManager : MonoBehaviour
         {
             currentPowerTime = POWER_TIME;
             currentPowerFill = 1;
-            superPower = Random.Range(superPowerChanceMin, superPowerChanceMax+1);
+            superPower = Random.Range(superPowerChanceMin, superPowerChanceMax + 1);
         }
 
         currentPowerTime -= Time.deltaTime;
+        if (currentPowerFill-Time.deltaTime*2 > 0)
+        {
+            currentPowerFill -= Time.deltaTime*2;
+        }
 
         if (powerActive())
         {
