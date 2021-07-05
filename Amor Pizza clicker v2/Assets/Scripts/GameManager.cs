@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public float POWER_TIME = 5;
     public float currentPowerTime;
     public int powerUpgrade = 5;
+    public int superPowerUpgrade = 10;
+    public int superPower;
+    public int superPowerChanceMin = 1;
+    public int superPowerChanceMax = 100;
 
     public static GameManager instance;
 
@@ -48,10 +52,11 @@ public class GameManager : MonoBehaviour
         {
             currentPowerTime = POWER_TIME;
             currentPowerFill = 1;
+            superPower = Random.Range(superPowerChanceMin, superPowerChanceMax+1);
         }
-        
+
         currentPowerTime -= Time.deltaTime;
-        
+
         if (powerActive())
         {
             powerProgress.fillAmount = currentPowerTime / POWER_TIME;
@@ -60,7 +65,21 @@ public class GameManager : MonoBehaviour
 
     public void changeMoney(float amount)
     {
-        money += amount * (powerActive() ? powerUpgrade : 1);
+        if (powerActive())
+        {
+            if (superPower == 1)
+            {
+                money += amount * superPowerUpgrade;
+            }
+            else
+            {
+                money += amount * powerUpgrade;
+            }
+        }
+        else
+        {
+            money += amount * (powerActive() ? powerUpgrade : 1);
+        }
 
         decimal moneyConverted = (decimal)money;
         string formatedMoney = decimal.Round(moneyConverted, 0).ToString() + "$";
