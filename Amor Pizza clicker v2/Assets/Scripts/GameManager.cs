@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int superPower;
     public int superPowerChanceMin = 1;
     public int superPowerChanceMax = 100;
+    public TextMeshProUGUI powerText;
 
     public static GameManager instance;
 
@@ -56,9 +57,9 @@ public class GameManager : MonoBehaviour
         }
 
         currentPowerTime -= Time.deltaTime;
-        if (currentPowerFill-Time.deltaTime*2 > 0)
+        if (currentPowerFill - Time.deltaTime * 2 > 0)
         {
-            currentPowerFill -= Time.deltaTime*2;
+            currentPowerFill -= Time.deltaTime * 2;
         }
 
         if (powerActive())
@@ -74,15 +75,18 @@ public class GameManager : MonoBehaviour
             if (superPower == 1)
             {
                 money += amount * superPowerUpgrade;
+                powerText.text = "Superpower";
             }
             else
             {
                 money += amount * powerUpgrade;
+                powerText.text = "Power";
             }
         }
         else
         {
-            money += amount * (powerActive() ? powerUpgrade : 1);
+            money += amount;
+            powerText.text = null;
         }
 
         decimal moneyConverted = (decimal)money;

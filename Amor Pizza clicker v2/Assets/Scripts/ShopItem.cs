@@ -11,6 +11,7 @@ public class ShopItem : MonoBehaviour
     public Image ikon;
     public ShopItemModel model;
     public TextMeshProUGUI level;
+    int superPowerChanceMaxStart = GameManager.instance.superPowerChanceMax;
 
 
     public void init(ShopItemModel _model)
@@ -23,7 +24,7 @@ public class ShopItem : MonoBehaviour
     {
         navn.text = model.navn;
         ikon.sprite = model.ikon;
-        if (model.level == 3)
+        if (model.level == superPowerChanceMaxStart)
         {
             level.text = "Max level";
         }
@@ -46,41 +47,45 @@ public class ShopItem : MonoBehaviour
 
     public void onClick()
     {
-        if (model.level < 100)
+        if (model.level < superPowerChanceMaxStart)
         {
-            if (GameManager.instance.money >= model.pris)
+            if (GameManager.instance.superPowerChanceMax > model.superPowerChanceIncrease)
             {
-                if (GameManager.instance.powerActive())
+                if (GameManager.instance.money >= model.pris)
                 {
-                    if (GameManager.instance.superPower == 1)
+                    if (GameManager.instance.powerActive())
                     {
-                        GameManager.instance.changeMoney(-model.pris / GameManager.instance.superPowerUpgrade);
+                        if (GameManager.instance.superPower == 1)
+                        {
+                            GameManager.instance.changeMoney(-model.pris / GameManager.instance.superPowerUpgrade);
+                        }
+                        else
+                        {
+                            GameManager.instance.changeMoney(-model.pris / GameManager.instance.powerUpgrade);
+                        }
                     }
                     else
                     {
-                        GameManager.instance.changeMoney(-model.pris / GameManager.instance.powerUpgrade);
+                        GameManager.instance.changeMoney(-model.pris);
                     }
-                }
-                else
-                {
-                    GameManager.instance.changeMoney(-model.pris);
-                }
 
-                GameManager.instance.clickUpgrade += model.clickPowerIncrease;
-                GameManager.instance.moneyPerSecond += model.moneyPerSecondIncrease;
-                if (GameManager.instance.superPowerChanceMax > 1)
-                {
-                    GameManager.instance.superPowerChanceMax -= model.superPowerChanceIncrease;
-                }
+                    GameManager.instance.clickUpgrade += model.clickPowerIncrease;
+                    GameManager.instance.moneyPerSecond += model.moneyPerSecondIncrease;
+                    if (GameManager.instance.superPowerChanceMax > model.superPowerChanceIncrease)
+                    {
+                        GameManager.instance.superPowerChanceMax -= model.superPowerChanceIncrease;
+                    }
 
-                model.pris = Mathf.FloorToInt(model.pris * model.prisStigning);
-                if (model.level < 100)
-                {
-                    model.level++;
-                }
+                    model.pris = Mathf.FloorToInt(model.pris * model.prisStigning);
+                    if (model.level < superPowerChanceMaxStart)
+                    {
+                        model.level++;
+                    }
 
-                updateUI();
+                    updateUI();
+                }
             }
+
         }
 
     }
