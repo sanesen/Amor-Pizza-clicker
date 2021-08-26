@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int superPowerUpgrade = 10;
     public int superPower;
     public int superPowerChanceMin = 1;
-    public int superPowerChanceMax = 100;
+    public static int superPowerChanceMax = 100;
     public TextMeshProUGUI powerText;
 
     public static GameManager instance;

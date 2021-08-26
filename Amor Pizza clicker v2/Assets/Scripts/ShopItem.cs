@@ -11,8 +11,12 @@ public class ShopItem : MonoBehaviour
     public Image ikon;
     public ShopItemModel model;
     public TextMeshProUGUI level;
-    int superPowerChanceMaxStart = GameManager.instance.superPowerChanceMax;
+    int superPowerChanceMaxStart;
 
+    private void Start()
+    {
+        superPowerChanceMaxStart = GameManager.superPowerChanceMax;
+    }
 
     public void init(ShopItemModel _model)
     {
@@ -49,7 +53,7 @@ public class ShopItem : MonoBehaviour
     {
         if (model.level < superPowerChanceMaxStart)
         {
-            if (GameManager.instance.superPowerChanceMax > model.superPowerChanceIncrease)
+            if (GameManager.superPowerChanceMax > model.superPowerChanceIncrease)
             {
                 if (GameManager.instance.money >= model.pris)
                 {
@@ -71,9 +75,9 @@ public class ShopItem : MonoBehaviour
 
                     GameManager.instance.clickUpgrade += model.clickPowerIncrease;
                     GameManager.instance.moneyPerSecond += model.moneyPerSecondIncrease;
-                    if (GameManager.instance.superPowerChanceMax > model.superPowerChanceIncrease)
+                    if (GameManager.superPowerChanceMax > model.superPowerChanceIncrease)
                     {
-                        GameManager.instance.superPowerChanceMax -= model.superPowerChanceIncrease;
+                        GameManager.superPowerChanceMax -= model.superPowerChanceIncrease;
                     }
 
                     model.pris = Mathf.FloorToInt(model.pris * model.prisStigning);
@@ -85,8 +89,6 @@ public class ShopItem : MonoBehaviour
                     updateUI();
                 }
             }
-
         }
-
     }
 }

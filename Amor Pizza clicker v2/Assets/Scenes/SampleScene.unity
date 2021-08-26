@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 176.27953}
+  m_AnchoredPosition: {x: 0, y: 0.0000034360507}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &113607557
@@ -320,7 +320,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.78984267}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -872,7 +872,15 @@ MonoBehaviour:
     superPowerChanceIncrease: 0
     level: 1
     prisStigning: 1.4
-  shopPrefab: {fileID: 6674510859906162573, guid: 262525c01a1109c47908132e8784b265, type: 3}
+  - navn: SuperPower
+    pris: 1200
+    ikon: {fileID: 21300000, guid: 1bba523ab5fb06f40859b225ab6d0665, type: 3}
+    clickPowerIncrease: 0
+    moneyPerSecondIncrease: 0
+    superPowerChanceIncrease: 1
+    level: 1
+    prisStigning: 3
+  shopPrefab: {fileID: 2599966135861071541, guid: 262525c01a1109c47908132e8784b265, type: 3}
   content: {fileID: 113607555}
 --- !u!1 &950676089
 GameObject:
@@ -1762,7 +1770,6 @@ MonoBehaviour:
   superPowerUpgrade: 10
   superPower: 0
   superPowerChanceMin: 1
-  superPowerChanceMax: 100
   powerText: {fileID: 1557649885}
 --- !u!4 &1737141668
 Transform:
@@ -2676,7 +2683,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 232929607}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.78984267
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
