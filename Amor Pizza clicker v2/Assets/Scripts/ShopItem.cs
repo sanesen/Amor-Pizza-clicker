@@ -28,21 +28,22 @@ public class ShopItem : MonoBehaviour
     {
         navn.text = model.navn;
         ikon.sprite = model.ikon;
-        if (model.level == superPowerChanceMaxStart)
+        if (model.navn == "Superpower" && model.level == superPowerChanceMaxStart)
         {
             level.text = "Max level";
+            pris.text = "";
         }
         else
         {
             level.text = "Lvl. " + model.level.ToString();
         }
 
-        if (model.pris < 1000)
+        if (model.pris < 1000 && level.text != "Max level")
         {
             pris.text = model.pris.ToString() + "$";
         }
 
-        else if (model.pris >= 1000)
+        else if (model.pris >= 1000 && level.text != "Max level")
         {
             decimal prisConverted = (decimal)model.pris;
             pris.text = decimal.Round(prisConverted / 1000, 0).ToString() + "K$";
@@ -51,7 +52,7 @@ public class ShopItem : MonoBehaviour
 
     public void onClick()
     {
-        if (model.level < superPowerChanceMaxStart)
+        if (model.level.ToString() != "Max level")
         {
             if (GameManager.superPowerChanceMax > model.superPowerChanceIncrease)
             {
@@ -81,7 +82,7 @@ public class ShopItem : MonoBehaviour
                     }
 
                     model.pris = Mathf.FloorToInt(model.pris * model.prisStigning);
-                    if (model.level < superPowerChanceMaxStart)
+                    if (model.level.ToString() != "Max level")
                     {
                         model.level++;
                     }
